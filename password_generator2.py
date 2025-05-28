@@ -11,15 +11,15 @@ symbols = "()[]{},;:.-_?+*#!@$%^&='<>"
 
 # User inputs
 try:
-    length = int(input("Hány karakteres legyen a jelszó? "))
-    amount = int(input("Hány jelszót szeretnél generálni? "))
+    length = int(input("How many characters do you want to use in the password?: "))
+    amount = int(input("How many passwords do you want to generate?: "))
 
-    use_upper = input("Használjon nagybetűket? (i/n): ").strip().lower() == "i"
-    use_lower = input("Használjon kisbetűket? (i/n): ").strip().lower() == "i"
-    use_nums = input("Használjon számokat? (i/n): ").strip().lower() == "i"
-    use_syms = input("Használjon szimbólumokat? (i/n): ").strip().lower() == "i"
+    use_upper = input("Do you want to use capital letters? (y/n): ").strip().lower() == "y"
+    use_lower = input("Do you want to use lowercase letters? (y/n): ").strip().lower() == "y"
+    use_nums = input("Do you want to use numbers? (y/n): ").strip().lower() == "y"
+    use_syms = input("Do you want to use symbols? (y/n): ").strip().lower() == "y"
 except ValueError:
-    print("Hibás bemenet. Csak számot adj meg hossz és mennyiség esetén.")
+    print("Invalid input. Please enter only numbers for length and quantity.")
     exit(1)
 
 # We compile the available characters
@@ -34,11 +34,11 @@ if use_syms:
     all_chars += symbols
 
 if not all_chars:
-    print("Legalább egy karaktertípusnak engedélyezve kell lennie!")
+    print("At least one character type must be enabled!")
     exit(1)
 
 # Generate passwords
-print("\nGenerált jelszavak:\n")
+print("\nGenerated passwords:\n")
 for _ in range(amount):
     password = "".join(random.choices(all_chars, k=length))
     print(password)
